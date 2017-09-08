@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+<div id="wrapper">
+    <p>Welcome to Great Number Game</p>
+    <p>I am thinking of a number from 1-100</p>
+    <p>Take a guess</p>
+    {% if errMsg==True: %}
+        <h1 color="red">Please enter only numerical values</h1>
+    {% endif %}
+    <p><form method="POST" action='/'>
+        <input type="text" name="guess"><Br>
+            <input type="submit" value="Guess">
+    </form></p>
+
+    {% if isCorrect != "new": %}
+     {% if isCorrect== True: %}
+    <div id="greensquare">
+            You Win! The secret numberis:
+            <h1>{{rnd}}</h1> 
+            <form method="GET" action='/'>
+                <input type="submit" value="Play Again?">
+            </form>
+    </div>
+    {% else %}
+    <div id="redsquare">
+        You lost!
+    </div>
+    {% endif %}
+     {% endif %}
+</div>
+
+</body>
+
+</html>
